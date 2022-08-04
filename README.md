@@ -47,3 +47,6 @@ obniz 公式の[パーツライブラリ](https://obniz.com/ja/sdk/parts)を参�
 | obniz-function | 追加パッケージ | node-red-contrib-obniz | MIT |
 | button | 追加パッケージ | node-red-dashboard | Apache-2.0 |
 | iframe | 追加パッケージ | node-red-node-ui-iframe | Apache-2.0 |
+
+# 構築手順
+[Wiki](https://github.com/kolinz/ctechbot-project/wiki)をご覧ください。
