@@ -1,0 +1,215 @@
+[
+    {
+        "id": "7953a564ae766a80",
+        "type": "tab",
+        "label": "obniz iot vehicle",
+        "disabled": false,
+        "info": "Control Obniz From Your Browser",
+        "env": []
+    },
+    {
+        "id": "2fe506d50be5e5b4",
+        "type": "http in",
+        "z": "7953a564ae766a80",
+        "name": "",
+        "url": "/obniz",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "ca5ea5cd35475c28"
+            ]
+        ]
+    },
+    {
+        "id": "d77cb1a3c9d3aefc",
+        "type": "http response",
+        "z": "7953a564ae766a80",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ca5ea5cd35475c28",
+        "type": "template",
+        "z": "7953a564ae766a80",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n <head>\n   <meta charset=\"utf-8\" />\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n   <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n   <script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"></script>\n   <script src=\"https://unpkg.com/obniz/obniz.js\" ></script>\n </head>\n <body>\n    <div id=\"obniz-debug\"></div>\n    <h1 align=\"center\">Control Obniz From Your Browser</h1>\n       <div class=\"d-flex justify-content-center\">\n            <div class=\"green_btn d-flex flex-column\">\n                <button class=\"btn btn-success m-1\" id=\"forward\">▲</button>\n            </div>\n            <div class=\"yellow_btn d-flex flex-column\">\n                <button class=\"btn btn-success m-1\" id=\"reverse\">▼</button>\n            </div>\n            <div class=\"yellow_btn d-flex flex-column\">\n                <button class=\"btn btn-info m-1\" id=\"turnRight\">◀</button>\n            </div>\n            <div class=\"yellow_btn d-flex flex-column\">\n                <button class=\"btn btn-info m-1\" id=\"turnLeft\">▶︎</button>\n            </div>\n            <div class=\"yellow_btn d-flex flex-column\">\n                <button class=\"btn btn-warning m-1\" id=\"stop\">■</button>\n            </div>\n       </div>\n    <script>\n     var obniz = new Obniz(\"0000-0000\");\n     obniz.onconnect = async function() {\n       var motorA = obniz.wired(\"DCMotor\", { forward: 1, back: 0 });\n       var motorB = obniz.wired(\"DCMotor\", { forward: 2, back: 3 });\n\n       //前に進む\n       $(\"#forward\").click(function() {\n           motorA.forward();\n           motorB.forward();\n       });\n       //右に向く\n       $(\"#turnLeft\").click(function() {\n           motorA.forward();\n           motorB.reverse();\n       });\n       //停まる\n       $(\"#stop\").click(function() {\n           motorA.stop();\n           motorB.stop();\n       });\n       //左に向く\n       $(\"#turnRight\").click(function() {\n           motorA.reverse();\n           motorB.forward();\n       });\n       //後ろに進む\n       $(\"#reverse\").click(function() {\n         motorA.reverse();\n         motorB.reverse();\n       });\n     };\n    </script>\n </body>\n</html>",
+        "output": "str",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "d77cb1a3c9d3aefc"
+            ]
+        ]
+    },
+    {
+        "id": "f02597a2f9850656",
+        "type": "obniz-function",
+        "z": "7953a564ae766a80",
+        "obniz": "44311276d665a09c",
+        "name": "obniz LED ON",
+        "code": "// JavaScript Example\nvar light = obniz.wired(\"Keyestudio_TrafficLight\", {gnd:8, green:9, yellow:10, red:11});\nlight.green.on();\nlight.yellow.on();\nlight.red.on();",
+        "x": 420,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "549e972041f4ec5e",
+        "type": "ui_iframe",
+        "z": "7953a564ae766a80",
+        "group": "e9f3e1f4cced9d38",
+        "name": "",
+        "order": 1,
+        "width": "6",
+        "height": "5",
+        "url": "httpまたはhttpsで始まるNode-REDのURL/obniz",
+        "origin": "*",
+        "scale": 100,
+        "x": 110,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a2490030bf6e6a65",
+        "type": "ui_button",
+        "z": "7953a564ae766a80",
+        "name": "",
+        "group": "e9f3e1f4cced9d38",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED点灯",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "f02597a2f9850656"
+            ]
+        ]
+    },
+    {
+        "id": "21d876df40f7ac9c",
+        "type": "comment",
+        "z": "7953a564ae766a80",
+        "name": "DCモーター制御UIをiframeとして読み込む",
+        "info": "",
+        "x": 220,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4c939da29bb3ded6",
+        "type": "comment",
+        "z": "7953a564ae766a80",
+        "name": "obnizにつなげたDCモーター制御UI",
+        "info": "",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8e5545bc86d21ce9",
+        "type": "ui_button",
+        "z": "7953a564ae766a80",
+        "name": "",
+        "group": "e9f3e1f4cced9d38",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "LED消灯",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 440,
+        "wires": [
+            [
+                "9062153268bc185a"
+            ]
+        ]
+    },
+    {
+        "id": "9062153268bc185a",
+        "type": "obniz-function",
+        "z": "7953a564ae766a80",
+        "obniz": "44311276d665a09c",
+        "name": "obniz LED OFF",
+        "code": "// JavaScript Example\nvar light = obniz.wired(\"Keyestudio_TrafficLight\", {gnd:8, green:9, yellow:10, red:11});\nlight.green.off();\nlight.yellow.off();\nlight.red.off();",
+        "x": 420,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79e511b749baa499",
+        "type": "comment",
+        "z": "7953a564ae766a80",
+        "name": "LEDの点灯と消灯の制御",
+        "info": "",
+        "x": 170,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "44311276d665a09c",
+        "type": "obniz",
+        "obnizId": "0000-0000",
+        "deviceType": "obnizboard",
+        "name": "",
+        "accessToken": "",
+        "code": ""
+    },
+    {
+        "id": "e9f3e1f4cced9d38",
+        "type": "ui_group",
+        "name": "デフォルト",
+        "tab": "4238d32391f1ad8d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4238d32391f1ad8d",
+        "type": "ui_tab",
+        "name": "ホーム",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
