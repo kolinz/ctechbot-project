@@ -13,6 +13,14 @@ Node-REDを動かすためのクラウドコンピューティングは、各社
 
 小学生含め、16歳未満の方は、16歳の以上のご家族の方とご一緒に取り組んでください。
 
+# DX type
+## チャットシステムを立ち上げで、家族や仲間、学校、会社で使えるチャットシステムを運用しよう。
+ - [Heroku 無料プランを使ってみよう (Mattermostを例に)](https://mydocument.atlassian.net/wiki/spaces/support4textbook/pages/1654128686)
+## ノーコードで、画像認識モデルを作る方法
+ - [Teachable Machineによる画像認識モデルの作成](https://mydocument.atlassian.net/wiki/spaces/support4textbook/pages/1654390803)
+## 社会を支える技術を知るシリーズ
+ - [コンテナ](https://mydocument.atlassian.net/wiki/spaces/support4textbook/pages/1683030042)
+ - [マイクロサービス](https://mydocument.atlassian.net/wiki/spaces/support4textbook/pages/1683259393)
 # Vehicle type
 ## tricycle version
 前輪の２輪 (スポーツタイヤセット)で、前進や後退、左回転、右回転、停止の制御を行う。後輪はボールキャスターを使用。
@@ -21,3 +29,4 @@ Node-REDを動かすためのクラウドコンピューティングは、各社
 Wikiの[二輪駆動三輪ロボット](https://github.com/kolinz/ctechbot-project/wiki/%E4%BA%8C%E8%BC%AA%E9%A7%86%E5%8B%95%E4%B8%89%E8%BC%AA%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88)をご覧ください。
 
 ![image](https://user-images.githubusercontent.com/16685896/183144961-6cf4004d-668b-43b1-8b00-c59cae4fcf06.png)
+
